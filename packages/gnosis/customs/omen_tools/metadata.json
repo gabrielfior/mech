@@ -1,0 +1,57 @@
+{
+  "omen-tools": {
+    "name": "Omen transaction builder",
+    "description": "Build transactions for Omen",
+    "input": {
+      "type": "object",
+      "description": "The request to relay to OpenAI's GPT-4 model.",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "description": "User prompt to send to OpenAI"
+          },
+          "rpc_url": {
+            "type": "string",
+            "description": "The URL of the Gnosis RPC provider"
+          }
+        },
+        "required": [
+          "prompt"
+        ]
+      }
+    },
+    "output": {
+      "type": "object",
+      "description": "A JSON object containing the prediction and confidence",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "requestId": {
+            "type": "integer",
+            "description": "Unique identifier for the request"
+          },
+          "result": {
+            "type": "string",
+            "description": "Transaction params serialized as JSON"
+          },
+          "prompt": {
+            "type": "string",
+            "description": "User prompt to send to OpenAI"
+          },
+          "generated_tx": {
+            "type": "string",
+            "description": "Generated transaction"
+          }
+        },
+        "required": [
+          "requestId",
+          "result",
+          "prompt",
+          "generated_tx"
+        ]
+      }
+    }
+  }
+}
